@@ -1,12 +1,14 @@
 const express = require("express");
 const axios = require("axios");
 require("dotenv").config();
+const cors = require("cors");
 const app = express();
 const PORT = 4000;
 
 const apiKey = process.env["BREVOAPI_KEY"];
 
 app.use(express.json());
+app.use(cors());
 
 app.post("/send-email", async (req, res) => {
   const apiUrl = "https://api.brevo.com/v3/smtp/email";
